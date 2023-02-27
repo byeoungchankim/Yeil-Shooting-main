@@ -52,7 +52,7 @@ public class Follower : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletObj, transform.position, Quaternion.identity);
         Rigidbody2D rd = bullet.GetComponent<Rigidbody2D>();
-        rd.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+        rd.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
 
         curBulletDelay = 0;
     }

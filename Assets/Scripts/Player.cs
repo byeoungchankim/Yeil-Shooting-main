@@ -119,7 +119,8 @@ public class Player : MonoBehaviour
         {
             case 1:
                 {
-                    GameObject bullet = Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
+                    GameObject bullet = Instantiate(bulletPrefabA);
+                    bullet.transform.position = transform.position + new Vector3(-Mathf.Sin(Time.timeSinceLevelLoad * 10f) * 0.4f, 0f);
                     Rigidbody2D rd = bullet.GetComponent<Rigidbody2D>();
                     rd.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
                 }
@@ -171,13 +172,13 @@ public class Player : MonoBehaviour
             case 5:
                 {
                     GameObject bulletSL = Instantiate(bulletPrefabD);
-                    bulletSL.transform.position = transform.position + new Vector3(-Mathf.Sin(Time.timeSinceLevelLoad * 15f) * 0.4f, 0f);
+                    bulletSL.transform.position = transform.position + new Vector3(-Mathf.Sin(Time.timeSinceLevelLoad * 10f) * 0.4f, 0f);
                     Rigidbody2D rdSL = bulletSL.GetComponent<Rigidbody2D>();
-                    rdSL.AddForce(Vector2.up * 8, ForceMode2D.Impulse);
+                    rdSL.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
                     GameObject bulletSR = Instantiate(bulletPrefabD);
-                    bulletSR.transform.position = transform.position + new Vector3(Mathf.Sin(Time.timeSinceLevelLoad * 15f) * 0.4f, 0f);
+                    bulletSR.transform.position = transform.position + new Vector3(Mathf.Sin(Time.timeSinceLevelLoad * 10f) * 0.4f, 0f);
                     Rigidbody2D rdSR = bulletSR.GetComponent<Rigidbody2D>();
-                    rdSR.AddForce(Vector2.up * 8, ForceMode2D.Impulse);
+                    rdSR.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
                 }
                 break;
 

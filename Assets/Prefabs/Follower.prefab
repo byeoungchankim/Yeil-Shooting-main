@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d6230f7a34e1a42b989799c2a2fe02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curBulletDelay: 2
+  curBulletDelay: 0
   maxBulletDelay: 1
   bulletObj: {fileID: 8595664436036601359, guid: ecc076089d8774a4cbafc9b75a628d79, type: 3}
   followDelay: 20

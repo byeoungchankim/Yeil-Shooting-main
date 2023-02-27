@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 5
+  health: 3
   enemyScore: 5000
   player: {fileID: 0}
   sprites:

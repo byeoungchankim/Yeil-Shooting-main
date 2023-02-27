@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,10 +24,14 @@ public class GameManager : MonoBehaviour
     public Image[] BoomImages;
     public GameObject gameOverSet;
 
+    public List<Spawn> spawnList;
+    public int spawnIndex;
+    public bool spawnEnd;
 
 
-    private void Awake()
+    void Awake()
     {
+        spawnList = new List<Spawn>();
         if (null == instance)
         {
             instance = this;
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+        ReadSpawnFile();
     }
     public static GameManager Instance => instance;
     // Start is called before the first frame update
@@ -60,10 +66,56 @@ public class GameManager : MonoBehaviour
         ScoreText.text = string.Format("{0:n0}", score);
         GAMEOVERScoreText.text = string.Format("{0:n0}", score);
     }
+    void ReadSpawnFile()
+    {
+        //변수 초기화 
+        spawnList.Clear();
+        spawnIndex = 0;
+        spawnEnd = false;
+
+        // 스폰 파일
+        TextAsset textFile = Resources.Load("Stage0") as TextAsset;
+        StringReader stringReader = new StringReader(textFile.text);
+        //한줄씩 데이터 저장
+        while (stringReader != null)
+        {
+            string line = stringReader.ReadLine();
+            Debug.Log(line) ;
+
+            if (line == null)
+                break;
+            Spawn spawnData = new Spawn();
+            spawnData.delay = float.Parse(line.Split(',')[0]);
+            spawnData.type = line.Split(',')[1];
+            spawnData.point = int.Parse(line.Split(',')[2]);
+            spawnList.Add(spawnData);
+
+        }
+
+        stringReader.Close();
+        //첫번
+        curEnemySpawnDelay = spawnList[0].delay;
+
+
+
+    }
 
 
     void SpawnEnemy()
     {
+        int enemyIndex = 0;
+        switch (spawnList[spawnIndex].type)
+        {
+            case "S":
+                enemyIndex = 0;
+                break;
+            case "M":
+                enemyIndex = 1;
+                break;
+            case "L":
+                enemyIndex = 2;
+                break;
+        }
         int ranType = Random.Range(0, 3);
         int ranPoint = Random.Range(0, 7);
         GameObject goEnemy = Instantiate(enemyPrefabs[ranType], spawnPoints[ranPoint].position, Quaternion.identity);
@@ -118,6 +170,6 @@ public class GameManager : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

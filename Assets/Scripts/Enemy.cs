@@ -127,27 +127,28 @@ public class Enemy : MonoBehaviour
             GameManager.Instance.score += enemyScore;
 
             //아이템 랜덤으로 떨굼
-            int ran = Random.Range(0, 10);
-            if (ran < 3)
-            {
-                Debug.Log("Not Item");
-            }
-            else if (ran < 6)//코인
+            float ran = Random.value;
+            Debug.Log("Item RNG: " + ran.ToString("0.00"));
+            if (ran < 0.15f)//코인
             {
                 Instantiate(ItmeCoin, transform.position, ItmeCoin.transform.rotation);
             }
-            else if (ran < 8)//파워
+            else if (ran < 0.30f)//파워
             {
                 Instantiate(ItemPower, transform.position, ItemPower.transform.rotation);
 
             }
-            else if (ran < 10)//팡
+            else if (ran < 0.45f)//팡
             {
                 Instantiate(ItemBoom, transform.position, ItemBoom.transform.rotation);
             }
-            else if (ran < 6)//마인
+            else if (ran < 0.60f)//마인
             {
-                Instantiate(ItemBoom, transform.position, ItemMine.transform.rotation);
+                Instantiate(ItemMine, transform.position, ItemMine.transform.rotation);
+            }
+            else
+            {
+                //Debug.Log("Not Item");
             }
 
             Destroy(gameObject);

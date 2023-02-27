@@ -136,14 +136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feefc5fd1c5e9054994834dc0df02011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   health: 1
   enemyScore: 100
   player: {fileID: 0}
   sprites:
   - {fileID: 156833522, guid: 57564a374edcf564296515874b70b1fd, type: 3}
   - {fileID: 28562049, guid: 57564a374edcf564296515874b70b1fd, type: 3}
-  bulletPrefab: {fileID: 2086697209856981980, guid: 1628577596ae4e34198f20e4bed33665, type: 3}
+  bulletPrefab: {fileID: 0}
   ItmeCoin: {fileID: 2558567353792104454, guid: ef97d6593dae24b4d89023a27534927b, type: 3}
   ItemBoom: {fileID: 2464039180096456538, guid: 11dabbabbb08c2945b7b1e3ac2ecdee0, type: 3}
   ItemMine: {fileID: 2558567353792104454, guid: a17a095e3c88b4c48b8083ccf110a063, type: 3}
